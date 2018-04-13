@@ -1,0 +1,19 @@
+# Recommended settings for golang http.Client.
+
+I have been reading a few posts about the golang http.Client, and [this]<https://medium.com/@nate510/don-t-use-go-s-default-http-client-4804cb19f779> post suggested that you not use the default http client. 
+
+After learning that I shouldn't the default golang client, my next question was, what settings should I use for the client? I decided to do some research. 
+
+## Timeout
+https://stackoverflow.com/questions/30371420/jquery-ajax-timeout-best-practice-value
+https://github.com/axios/axios
+
+The conclusion is that there is no 'best practice'. The most important thing is to have a timeout value. I would probably set a timeout of 10 seconds and then increase it as needed for requests that I know can take a really long time.
+
+Things to consider:
+
+* Reliabliity of the service (is it frequently slow or bogged down)
+* Impact of hanging on the request for logn periods of time. 
+* How long to most requests take, and what is the likelihood that a request will exceed your timeout.
+
+Choose a value and adjust it as needed.
